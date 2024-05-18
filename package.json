@@ -1,0 +1,20 @@
+{
+  "name": "linkedin-pjp-widget-vue",
+  "version": "1.0.0",
+  "main": "dist/linkedin-pjp-widget-vue.umd.min.js",
+  "scripts": {
+    "build": "vue-cli-service build --target lib --name linkedin-pjp-widget-vue ./src/index.js",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "vue": "^2.7.16"
+  },
+  "devDependencies": {
+    "sass": "^1.77.2",
+    "sass-loader": "^14.2.1"
+  }
+}
