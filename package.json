@@ -6,10 +6,18 @@
     "build": "vue-cli-service build --target lib --name linkedin-pjp-widget-vue ./src/index.js",
     "test": "jest"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "linkedin",
+    "pjp",
+    "widget",
+    "vue"
+  ],
+  "author": "AlysonBasilio",
+  "license": "MIT",
+  "description": "LinkedIn PJP Widget Vue",
   "dependencies": {
     "vue": "^2.7.16"
   },
