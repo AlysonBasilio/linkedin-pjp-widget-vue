@@ -1,6 +1,6 @@
 {
   "name": "linkedin-pjp-widget-vue",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/linkedin-pjp-widget-vue.umd.min.js",
   "scripts": {
     "build": "vue-cli-service build --target lib --name linkedin-pjp-widget-vue ./src/index.js",
@@ -31,5 +31,6 @@
     "jest-environment-jsdom": "^29.7.0",
     "sass": "^1.77.2",
     "sass-loader": "^14.2.1"
-  }
+  },
+  "homepage": "https://github.com/AlysonBasilio/linkedin-pjp-widget-vue"
 }

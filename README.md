@@ -5,7 +5,7 @@ A vue component to implement [LinkedIn PJP Widget](https://learn.microsoft.com/e
 ## Project setup
 
 ```
-npm install --save linkedin-pjp-widget-vue
+npm install linkedin-pjp-widget-vue
 ```
 
 or
