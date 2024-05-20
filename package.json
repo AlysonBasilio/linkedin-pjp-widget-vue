@@ -4,7 +4,8 @@
   "main": "dist/linkedin-pjp-widget-vue.umd.min.js",
   "scripts": {
     "build": "vue-cli-service build --target lib --name linkedin-pjp-widget-vue ./src/index.js",
-    "test": "jest"
+    "test": "jest",
+    "publish": "npm publish --access public"
   },
   "files": [
     "dist"
