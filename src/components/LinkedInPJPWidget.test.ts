@@ -1,27 +1,31 @@
-import { render } from '@testing-library/vue';
+import { describe, it, expect, afterEach, beforeEach } from 'vitest';
+import { mount } from '@vue/test-utils';
 import LinkedInPJPWidget from './LinkedInPJPWidget.vue';
 
 describe('components > LinkedInPJPWidget', () => {
-  it('adds the scripts to the document', () => {
-    render(LinkedInPJPWidget, {
+  let component: ReturnType<typeof mount>;
+
+  beforeEach(() => {
+    component = mount(LinkedInPJPWidget, {
       props: {
         apiKey: 'test-api',
       },
-    })
+    });
+  })
 
-    // eslint-disable-next-line testing-library/no-node-access
+  afterEach(() => {
+    component.unmount();
+  })
+
+  it('adds the scripts to the document', () => {
     expect(document.head.querySelector('script[src="https://platform.linkedin.com/xdoor/scripts/in.js"]')).not.toBeNull();
-    // eslint-disable-next-line testing-library/no-node-access
-    expect(document.body.querySelector('script[type="IN/UJPWidget"]')).not.toBeNull();
+    const parser = new DOMParser();
+    const html = parser.parseFromString(component.html(), 'text/html');
+    expect(html.querySelector('script[type="IN/UJPWidget"]')).not.toBeNull();
   });
 
   describe('when calling the confirmJobPoster function', () => {
     it('emits the event with the data', () => {
-      const component = render(LinkedInPJPWidget, {
-        props: {
-          apiKey: 'test-api',
-        },
-      })
 
       const data = [{
         integrationContext: 'urn:li:contract:430400943',
@@ -36,18 +40,11 @@ describe('components > LinkedInPJPWidget', () => {
     });
   });
 
-  describe('when destroying the component', () => {
+  describe('when unmounting the component', () => {
     it('removes the scripts from the document', () => {
-      const component = render(LinkedInPJPWidget, {
-        props: {
-          apiKey: 'test-api',
-        },
-      })
       component.unmount();
 
-      // eslint-disable-next-line testing-library/no-node-access
       expect(document.head.querySelector('script[src="https://platform.linkedin.com/xdoor/scripts/in.js"]')).toBeNull();
-      // eslint-disable-next-line testing-library/no-node-access
       expect(document.body.querySelector('script[type="IN/UJPWidget"]')).toBeNull();
     });
   });

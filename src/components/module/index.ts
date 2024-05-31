@@ -1,8 +1,25 @@
+type Integration = {
+  integrationContext: string;
+  integrationType: string;
+  onboardingStatus: string;
+  tenantType: string;
+};
+type AddLinkedInPJPWidgetParams = {
+  apiKey: string;
+  htmlElementToAttachWidget: HTMLElement;
+  onJobPosterConfirmed: (integrations: Integration[]) => void;
+};
+declare global {
+  interface Window {
+    confirmJobPoster: (integrations: Integration[]) => void;
+  }
+}
+
 export function addLinkedInPJPWidget({
   apiKey,
   htmlElementToAttachWidget,
   onJobPosterConfirmed,
-}) {
+}: AddLinkedInPJPWidgetParams) {
   const linkedInScript = document.createElement('script');
   linkedInScript.type = 'text/javascript';
   linkedInScript.src = 'https://platform.linkedin.com/xdoor/scripts/in.js';
@@ -17,6 +34,7 @@ export function addLinkedInPJPWidget({
   const widgetScript = document.createElement('script');
   widgetScript.type = 'IN/UJPWidget';
   widgetScript.setAttribute('data-onconfirmjobposter', 'confirmJobPoster');
+
   widgetScript.setAttribute('data-width', '100%');
   htmlElementToAttachWidget.appendChild(widgetScript);
 

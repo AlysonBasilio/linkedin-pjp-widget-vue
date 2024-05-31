@@ -1,15 +1,27 @@
 {
   "name": "linkedin-pjp-widget-vue",
-  "version": "1.0.1",
-  "main": "dist/linkedin-pjp-widget-vue.umd.min.js",
+  "version": "2.0.0",
+  "type": "module",
   "scripts": {
-    "build": "vue-cli-service build --target lib --name linkedin-pjp-widget-vue ./src/index.js",
-    "test": "jest",
+    "dev": "vite",
+    "test": "vitest",
+    "build": "vue-tsc && vite build && vue-tsc --emitDeclarationOnly",
+    "preview": "vite preview",
     "publish": "npm publish --access public"
   },
   "files": [
     "dist"
   ],
+  "main": "dist/linkedin-pjp-widget.umd.js",
+  "module": "dist/linkedin-pjp-widget.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/linkedin-pjp-widget.es.js",
+      "require": "./dist/linkedin-pjp-widget.umd.js"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "types": "index.d.ts",
   "keywords": [
     "linkedin",
     "pjp",
@@ -19,19 +31,17 @@
   "author": "AlysonBasilio",
   "license": "MIT",
   "description": "LinkedIn PJP Widget Vue",
+  "homepage": "https://github.com/AlysonBasilio/linkedin-pjp-widget-vue",
   "dependencies": {
-    "vue": "^2.7.16"
+    "vue": "^3.4.21"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.5",
-    "@babel/preset-env": "^7.24.5",
-    "@testing-library/vue": "^5.9.0",
-    "@vue/vue2-jest": "^29.2.6",
-    "babel-jest": "^29.7.0",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
-    "sass": "^1.77.2",
-    "sass-loader": "^14.2.1"
-  },
-  "homepage": "https://github.com/AlysonBasilio/linkedin-pjp-widget-vue"
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vue/test-utils": "^2.4.6",
+    "jsdom": "^24.1.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
+    "vitest": "^1.6.0",
+    "vue-tsc": "^2.0.6"
+  }
 }

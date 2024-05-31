@@ -1,9 +1,10 @@
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { addLinkedInPJPWidget } from './index';
 
 describe('addLinkedInPJPWidget', () => {
   const apiKey = 'test-api'
   const htmlElementToAttachWidget = document.createElement('div');
-  const onJobPosterConfirmed = jest.fn();
+  const onJobPosterConfirmed = vi.fn();
 
   it('adds the LinkedIn PJP widget to the page and returns the scripts element', () => {
     const scripts = addLinkedInPJPWidget({
